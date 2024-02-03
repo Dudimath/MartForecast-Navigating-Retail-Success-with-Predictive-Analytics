@@ -7,15 +7,15 @@ body {
 .container {
     max-width: 600px;
     margin: 50px auto;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly increase opacity for better readability */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Slightly increase shadow for better depth */
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #3498db; /* Change heading color to a blue shade */
 }
 
 .form-container {
@@ -29,19 +29,21 @@ h1 {
 label {
     display: block;
     margin-bottom: 5px;
-    color: #333;
+    color: #555; /* Change label color to a slightly darker shade */
 }
 
 input {
     width: 100%;
-    padding: 8px;
+    padding: 10px; /* Increase input padding for better appearance */
     box-sizing: border-box;
+    border: 1px solid #ccc; /* Add a subtle border for input fields */
+    border-radius: 5px; /* Add border radius for a softer look */
 }
 
 button {
-    background-color: #3498db;
+    background-color: #2ecc71; /* Change button color to a green shade */
     color: #fff;
-    padding: 10px;
+    padding: 12px; /* Increase button padding for better appearance */
     border: none;
     cursor: pointer;
     width: 100%;
@@ -49,7 +51,7 @@ button {
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #27ae60; /* Darken button color on hover */
 }
 
 .result-container {
@@ -61,8 +63,23 @@ h2 {
 }
 
 #prediction-result {
-    color: #555;
+    color: #e74c3c; /* Change prediction result color to a red shade */
     font-weight: bold;
     font-size: 18px;
     text-align: center;
+    transition: color 0.3s; /* Add transition for smoother color change */
+}
+
+/* Add animation to the prediction result */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#prediction-result {
+    animation: fadeIn 0.5s ease-in-out; /* Apply fadeIn animation to prediction result */
+}
+/* CSS */
+.hidden {
+    display: none;
 }

@@ -1,34 +1,39 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify, render_template, request
 import joblib
+import os
 import numpy as np
 
 app = Flask(__name__)
 
-# Load your model
-model = joblib.load('BigMart_Sales_Best_Model.pkl')
 
-@app.route('/')
-def home():
-    return "Machine Learning Model API"
+@app.route("/")
+def index():
+    return render_template("index.html")
 
-@app.route('/predict', methods=['POST'])
-def predict():
-    try:
-        # Get the input data
-        data = request.get_json(force=True)
-        
-        # Convert data to a numpy array
-        features = np.array(data['features']).reshape(1, -1)
-        
-        # Make predictions
-        prediction = model.predict(features)
-        
-        # Respond with the prediction
-        return jsonify(prediction.tolist())
-    
-    except Exception as e:
-        return jsonify({'error': str(e)})
+@app.route('/predict',methods=['POST','GET'])
+def result():
 
-if __name__ == '__main__':
-    # Run the Flask app on port 5000
-    app.run(port=5000)
+    item_weight= float(request.form['item_weight'])
+    item_fat_content=float(request.form['item_fat_content'])
+    item_visibility= float(request.form['item_visibility'])
+    item_type= float(request.form['item_type'])
+    item_mrp = float(request.form['item_mrp'])
+    outlet_establishment_year= float(request.form['outlet_establishment_year'])
+    outlet_size= float(request.form['outlet_size'])
+    outlet_location_type= float(request.form['outlet_location_type'])
+    outlet_type= float(request.form['outlet_type'])
+
+    X = np.array([[ item_weight,item_fat_content,item_visibility,item_type,item_mrp,
+                  outlet_establishment_year,outlet_size,outlet_location_type,outlet_type ]])
+
+
+    model_path='random_forest_grid.sav'
+
+    model= joblib.load(model_path)
+
+    Y_pred=model.predict(X)
+
+    return jsonify({'Prediction': float(Y_pred)})
+
+if __name__ == "__main__":
+    app.run(debug=True, port=9457)

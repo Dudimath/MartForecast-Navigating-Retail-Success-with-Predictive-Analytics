@@ -88,7 +88,7 @@ contd...
 
 The following example shows a prediction result:
 
-```plaintext
+
 Predicted Sales: $1069
 
 ## Recommendations & Conclusions

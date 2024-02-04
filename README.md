@@ -70,6 +70,26 @@ The best-performing model has been saved using the joblib library, facilitating 
 ## Deployment
 
 For deployment, we recommend using frameworks such as Flask. Deployment considerations include creating APIs for model predictions and ensuring the security of user data.
+# My Awesome Sales Prediction App
+
+### User Interface
+
+  - Input Form
+![Input Form2](static/images/UI1.PNG)
+
+contd...
+
+![Input Form2](static/images/UI2.PNG)
+
+### Prediction Result
+![Prediction Result](static/images/predictions.PNG)
+
+## Example Prediction
+
+The following example shows a prediction result:
+
+```plaintext
+Predicted Sales: $1069
 
 ## Recommendations & Conclusions
 
